@@ -148,8 +148,15 @@ defmodule AepfOpensearch.DataLayer do
     end
   end
 
+  # @impl true
+  # def destroy(resource, %{data: %{id: id}}) do
+  #   Client.delete(resource, id)
+  # end
+
   @impl true
-  def destroy(resource, %{data: %{id: id}}) do
+  def destroy(resource, %{data: record}) do
+    [pk_field] = Ash.Resource.Info.primary_key(resource)
+    id = Map.get(record, pk_field)
     Client.delete(resource, id)
   end
 
