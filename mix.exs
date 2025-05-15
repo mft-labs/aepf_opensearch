@@ -4,11 +4,10 @@ defmodule AepfOpensearch.MixProject do
   def project do
     [
       app: :aepf_opensearch,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-
       description: description(),
       package: package()
     ]
@@ -47,7 +46,7 @@ defmodule AepfOpensearch.MixProject do
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/mft-labs/aepf_opensearch",
-        "Docs"   => "https://hexdocs.pm/aepf_opensearch",
+        "Docs" => "https://hexdocs.pm/aepf_opensearch"
       },
       files: ~w(lib mix.exs README.md LICENSE)
     ]

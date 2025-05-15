@@ -9,6 +9,11 @@ defmodule AepfOpensearch.Client do
   alias AepfOpensearch.Translator
   alias Ash.Query
 
+  defp base_url(context \\ %{}) do
+    Map.get(context, :opensearch_url) ||
+      Application.get_env(:aepf_opensearch, :opensearch_url, "http://localhost:9200")
+  end
+
   defp index_for(resource) do
     resource
     |> Module.split()
@@ -19,7 +24,8 @@ defmodule AepfOpensearch.Client do
 
   defp url_for(resource, path \\ "") do
     index = index_for(resource)
-    "http://localhost:9200/#{index}#{path}"
+    # "http://localhost:9200/#{index}#{path}"
+    "#{base_url()}/#{index}#{path}"
   end
 
   def insert(resource, data) do
